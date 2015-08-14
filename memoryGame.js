@@ -19,9 +19,8 @@ function cardCreator (cardId) {
 	var newCard = document.createElement('div');
 		newCard.setAttribute('class', shuffledCards[cardId]);
     newCard.setAttribute('id', cardId);
-    // newCard.innerHTML = "<p>" + newCard.className + "</p>";
 		newCard.style.backgroundColor = 'blue';
-		newCard.style.paddingBottom = '200px';
+		newCard.style.height = '200px';
 		newCard.style.width = '200px';
 		newCard.style.borderStyle = 'solid';
 		newCard.style.borderColor = '#c8c8c8';
@@ -30,12 +29,12 @@ function cardCreator (cardId) {
 		newCard.addEventListener('click', function () {
       var eventId = this.getAttribute('id');
       if(firstClass === null){
-        newCard.innerHTML = "<p>" + newCard.className + "</p>";
+        newCard.innerHTML = newCard.className;
         firstId = eventId
         return firstClass = this.className;
       }
       else if (firstClass === newCard.className && firstId !== eventId) {
-        newCard.innerHTML = "<p>" + newCard.className + "</p>";
+        newCard.innerHTML = newCard.className;
         firstClass = null;
         firstId = null;
         pairCounter += 1;
@@ -45,15 +44,20 @@ function cardCreator (cardId) {
         console.log('Correct');
       }
       else {
-        console.log(firstId);
-        console.log(firstClass);
-        console.log(eventId);
-        console.log(newCard.className);
-        newCard.innerHTML = "<p>" + newCard.className + "</p>";
-        firstClass = null;
-        firstId = null;
+        newCard.innerHTML = newCard.className;
         console.log('Try Again!');
-      }
+        var firstElement = document.getElementById(firstId);
+        var secondElement = document.getElementById(eventId);
+          
+          window.setTimeout(function(){
+            firstElement.innerHTML = '';
+            secondElement.innerHTML = '';
+          }, 500);
+          console.log(firstId.innerHTML)
+
+          firstClass = null;
+          firstId = null;
+        }
 			
 		})
 	section.appendChild(newCard);
