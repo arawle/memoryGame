@@ -1,5 +1,7 @@
 var section = document.querySelectorAll('section')[0];
-var firstCard = 0;
+var firstClass = null;
+var firstId = null;
+var pairCounter = 0;
 
 var cardPairsOne = ['dog', 'cat', 'cow', 'chicken', 'horse', 'rabbit', 'bird', 'ostrich', 'dog', 'cat', 'cow', 'chicken', 'horse', 'rabbit', 'bird', 'ostrich'];
 var shuffleCards = function (array) {
@@ -13,9 +15,11 @@ var shuffleCards = function (array) {
 }
 var shuffledCards = shuffleCards(cardPairsOne);
 
-function cardCreator (card) {
+function cardCreator (cardId) {
 	var newCard = document.createElement('div');
-		newCard.setAttribute('class', shuffledCards[j]);
+		newCard.setAttribute('class', shuffledCards[cardId]);
+    newCard.setAttribute('id', cardId);
+    // newCard.innerHTML = "<p>" + newCard.className + "</p>";
 		newCard.style.backgroundColor = 'blue';
 		newCard.style.paddingBottom = '200px';
 		newCard.style.width = '200px';
@@ -24,17 +28,30 @@ function cardCreator (card) {
 		newCard.style.borderWidth = '1px';
 		newCard.style.float = 'left';
 		newCard.addEventListener('click', function () {
-      if(firstCard === 0){
+      var eventId = this.getAttribute('id');
+      if(firstClass === null){
         newCard.innerHTML = "<p>" + newCard.className + "</p>";
-        return firstCard = shuffledCards[j];
-
+        firstId = eventId
+        return firstClass = this.className;
       }
-      else if (firstCard = newCard.className){
-        firstCard = 0;
+      else if (firstClass === newCard.className && firstId !== eventId) {
+        newCard.innerHTML = "<p>" + newCard.className + "</p>";
+        firstClass = null;
+        firstId = null;
+        pairCounter += 1;
+        if (pairCounter === 8){
+          alert('You WIN!!!')
+        }
         console.log('Correct');
       }
       else {
-        firstCard = 0;
+        console.log(firstId);
+        console.log(firstClass);
+        console.log(eventId);
+        console.log(newCard.className);
+        newCard.innerHTML = "<p>" + newCard.className + "</p>";
+        firstClass = null;
+        firstId = null;
         console.log('Try Again!');
       }
 			
@@ -43,24 +60,27 @@ function cardCreator (card) {
 }
 
 	for(var j = 0; j < cardPairsOne.length; j++){
-		cardCreator(shuffledCards[j]);
+		cardCreator(j);
 	}
 
 
 
-	// All cards have the same background color to begin with.
-
-	// Add even listener, on click, show image of the word. 
-
+// change event listener to show picture of the class instead
+    // the word.
 // style the paragraph 
 // make the divs that are floating not break
 // figure out flipping scenario
 // score display for matches
-//   once a user 8 matches- congratulate them
-// reset button
+// once a user 8 matches- congratulate them
 // don't clount click of same div twice
 
-
+//add reset button
+var button = document.createElement('button')
+button.innerHTML = 'click to reset';
+button.addEventListener('click', function(){
+  location.reload('div');
+})
+document.querySelector('body').appendChild(button);
 
 
 
