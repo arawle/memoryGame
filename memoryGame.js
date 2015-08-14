@@ -1,5 +1,5 @@
 var section = document.querySelectorAll('section')[0];
-
+var firstCard = 0;
 
 var cardPairsOne = ['dog', 'cat', 'cow', 'chicken', 'horse', 'rabbit', 'bird', 'ostrich', 'dog', 'cat', 'cow', 'chicken', 'horse', 'rabbit', 'bird', 'ostrich'];
 var shuffleCards = function (array) {
@@ -23,7 +23,20 @@ function cardCreator (card) {
 		newCard.style.borderColor = '#c8c8c8';
 		newCard.style.borderWidth = '1px';
 		newCard.style.float = 'left';
-		newCard.addEventListener('click', function() {
+		newCard.addEventListener('click', function () {
+      if(firstCard === 0){
+        newCard.innerHTML = "<p>" + newCard.className + "</p>";
+        return firstCard = shuffledCards[j];
+
+      }
+      else if (firstCard = newCard.className){
+        firstCard = 0;
+        console.log('Correct');
+      }
+      else {
+        firstCard = 0;
+        console.log('Try Again!');
+      }
 			
 		})
 	section.appendChild(newCard);
@@ -39,12 +52,21 @@ function cardCreator (card) {
 
 	// Add even listener, on click, show image of the word. 
 
-	// //   shuffle: function (h){
- //    for (var i = 0; i < h.length * 100; i++){
- //      var randomNum = Math.round(Math.random() * (h.length - 1));
- //      var insert = h[randomNum];
- //      h.splice(randomNum, 1);
- //      h.unshift(insert);
- //    }
- //    return h;
- //  },
+// style the paragraph 
+// make the divs that are floating not break
+// figure out flipping scenario
+// score display for matches
+//   once a user 8 matches- congratulate them
+// reset button
+// don't clount click of same div twice
+
+
+
+
+
+
+
+
+
+
+
