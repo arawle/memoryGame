@@ -17,15 +17,10 @@ var shuffledCards = shuffleCards(cardPairsOne);
 
 function cardCreator (cardId) {
 	var newCard = document.createElement('div');
+
 		newCard.setAttribute('class', shuffledCards[cardId]);
     newCard.setAttribute('id', cardId);
-		newCard.style.backgroundColor = 'rgb(55,110,133)';
-		newCard.style.height = '152px';
-		newCard.style.width = '152px';
-		newCard.style.borderStyle = 'solid';
-		newCard.style.borderColor = '#c8c8c8';
-		newCard.style.borderWidth = '1px';
-		newCard.style.float = 'left';
+
 		newCard.addEventListener('click', function () {
       var eventId = this.getAttribute('id');
       if(firstClass === null){
@@ -62,29 +57,17 @@ function cardCreator (cardId) {
 		})
 	section.appendChild(newCard);
 }
-
 	for(var j = 0; j < cardPairsOne.length; j++){
 		cardCreator(j);
 	}
-
-
-
-// change event listener to show picture of the class instead
-    // the word.
-// style the paragraph 
-// make the divs that are floating not break
-// figure out flipping scenario
-// score display for matches
-// once a user 8 matches- congratulate them
-// don't clount click of same div twice
-
-//add reset button
-var button = document.createElement('button')
-button.innerHTML = 'click to reset';
+  
+//add reset button event handler
+var button = document.querySelector('button');
 button.addEventListener('click', function(){
   location.reload('div');
+  console.log('hello');
 })
-document.querySelector('body').appendChild(button);
+
 
 
 
