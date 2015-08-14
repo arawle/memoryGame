@@ -1,6 +1,13 @@
 section {
 	border: 1px solid black;
-	height: 808px;
-	width: 808px;
+	height: 750px;
+	width: 750px;
+	margin: 50px;
+	background-color: rgb(133,78,55);
+	text-align: center;
+	
+}
 
+div {
+	margin: 15px;
 }

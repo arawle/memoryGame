@@ -19,9 +19,9 @@ function cardCreator (cardId) {
 	var newCard = document.createElement('div');
 		newCard.setAttribute('class', shuffledCards[cardId]);
     newCard.setAttribute('id', cardId);
-		newCard.style.backgroundColor = 'blue';
-		newCard.style.height = '200px';
-		newCard.style.width = '200px';
+		newCard.style.backgroundColor = 'rgb(55,110,133)';
+		newCard.style.height = '152px';
+		newCard.style.width = '152px';
 		newCard.style.borderStyle = 'solid';
 		newCard.style.borderColor = '#c8c8c8';
 		newCard.style.borderWidth = '1px';
